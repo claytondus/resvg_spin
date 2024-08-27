@@ -1,9 +1,8 @@
 use spin_sdk::http::{IntoResponse, Request, Response};
 use spin_sdk::http_component;
 
-/// A simple Spin HTTP component.
 #[http_component]
-fn handle_resvg_svc(req: Request) -> anyhow::Result<impl IntoResponse> {
+fn handle_resvg_spin(req: Request) -> anyhow::Result<impl IntoResponse> {
     println!("Handling request to {:?}", req.header("spin-full-url"));
 
     let tree = {
@@ -31,7 +30,7 @@ mod test {
     use spin_sdk::http::Method::Get;
 
     #[test]
-    fn test_handle_resvg_svc() {
+    fn test_handle_resvg_spin() {
         
         let svg_data = r###"
         <svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +49,7 @@ mod test {
             .body(svg_data.into_body())
             .build();
 
-        let res = handle_resvg_svc(req).unwrap().into_response();
+        let res = handle_resvg_spin(req).unwrap().into_response();
 
         assert_eq!(res.status(), &200);
         assert_eq!(res.header("content-type").unwrap().as_str().unwrap(), "image/png");

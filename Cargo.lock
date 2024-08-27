@@ -492,7 +492,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "resvg-svc"
+name = "resvg-spin"
 version = "0.1.0"
 dependencies = [
  "anyhow",

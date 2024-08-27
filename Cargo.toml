@@ -1,5 +1,5 @@
 [package]
-name = "resvg-svc"
+name = "resvg-spin"
 authors = ["Clayton Davis <claytondus@gmail.com>"]
 description = ""
 version = "0.1.0"
