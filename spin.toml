@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "resvg-svc"
+version = "0.1.0"
+authors = ["Clayton Davis <claytondus@gmail.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "resvg-svc"
+
+[component.resvg-svc]
+source = "target/wasm32-wasi/release/resvg_svc.wasm"
+allowed_outbound_hosts = []
+[component.resvg-svc.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
